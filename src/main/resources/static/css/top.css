@@ -41,13 +41,17 @@
 #page{
 	margin-top:100px;
 }
-#top-state{
+.state{
 	font-family: 'Noto Sans TC', sans-serif;
 	color:#606c76;
 	margin-top:-80px;
-	margin-bottom:20px;
+	margin-bottom:50px;
+}
+.next{
+	margin-top:5px;
+	margin-left:20px;
 }
 #top-chart-wrapper2{
-	margin-left:700px;
+	margin-left:750px;
 	height:50%;
 }

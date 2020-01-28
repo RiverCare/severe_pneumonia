@@ -1,21 +1,18 @@
 function makeTopChart(data){
 	let data1 = data[0]
 	let data2 = data[1];
+
+	let outside = parseInt(data1[0]);
+	let inside = parseInt(data1[1]);
+	let sum = outside+inside;
 	
-	let year = data1[0].substr(0,4);
-	let month = data1[0].substr(4,2);
-	let day = data1[0].substr(6,2);
-	let hour = data1[0].substr(8,2);
-	let minute = data1[0].substr(10,2);
-	let outside = parseInt(data1[1]);
-	let inside = parseInt(data1[2]);
 	var chart1 = new CanvasJS.Chart("top-chart-container1", {
 		theme: "light2",
 		exportFileName: "Doughnut Chart",
 		animationEnabled: true,
 		backgroundColor:"#f4f5f6",
 		title:{
-			text: "最新疫情（"+year+"年"+month+"月"+day+"日"+hour+"時"+minute+"分更新）",
+			text: "最新疫情（總共"+sum+"人）",
 			fontFamily: "'Noto Sans TC', sans-serif",
 			fontColor:"#606c76",
 			fontSize:20
