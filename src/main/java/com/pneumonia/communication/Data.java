@@ -3,6 +3,7 @@ package com.pneumonia.communication;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +31,25 @@ public class Data {
 		values.add(value);
 		csv.close();
 		return values;
+	}
+	
+	public static String fetchStatView() throws IOException{
+		File dir = new File("src/main/resources/static/csv/stat_view.csv");
+		FileReader fileReader = new FileReader(dir.getPath());
+		BufferedReader csv = new BufferedReader(fileReader);
+		return csv.readLine();
+	}
+	
+	public static void writeStatView() throws IOException{
+		File dir = new File("src/main/resources/static/csv/stat_view.csv");
+		FileReader fileReader = new FileReader(dir.getPath());
+		BufferedReader csv = new BufferedReader(fileReader);
+		int view = Integer.parseInt(csv.readLine());
+		view += 1;
 		
+		FileWriter fileWriter =new FileWriter("src/main/resources/static/csv/stat_view.csv", false);
+		fileWriter.append(String.valueOf(view));
+		fileWriter.flush();
+		fileWriter.close();
 	}
 }

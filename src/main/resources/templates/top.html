@@ -28,6 +28,7 @@
 		</div>
 		<div id="stat">
 			<div class="state">請稍待作者群之開發，將有更詳細之統計分析於此發佈</div>
+			<div id="stat-view"class="state next"></div>
 		</div>
 		<div id="words">
 			<div class="state next">此網頁由愛護台灣之程式開發者所架設。</div>
@@ -55,6 +56,7 @@ function load(page){
 		$("#words").fadeOut(0);
 		break;
 	case 1: //stat
+		getStat();
 		$("#top").fadeOut(0);
 		$("#stat").fadeIn(0);
 		$("#news").fadeOut(0);
@@ -77,6 +79,19 @@ function getTop(){
 			makeTopChart(res);
 			console.log(res[0]);
 			console.log(res[1]);
+		},
+		error : function(){
+			console.log("fail");
+		}
+	});
+}
+
+function getStat(){
+	$.ajax({
+		type : "POST",
+		url : "/getStat",
+		success : function(res){
+			document.getElementById("stat-view").innerText = "網頁瀏覽人數："+res+"人";
 		},
 		error : function(){
 			console.log("fail");
