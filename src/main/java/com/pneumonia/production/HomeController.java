@@ -15,7 +15,7 @@ import com.pneumonia.communication.Data;
 public class HomeController {
 	@RequestMapping(value= "/", method = RequestMethod.GET)
 	public ModelAndView home(ModelAndView mav) {
-		return new ModelAndView("/top");
+		return new ModelAndView("top");
 	}
 	
 	@RequestMapping(value= "/getTop", method = RequestMethod.POST)
