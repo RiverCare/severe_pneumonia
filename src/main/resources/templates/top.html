@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<head>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<script src="js/topChart.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/top.css">
+</head>
+<body id="body">
+	<div id="banner">
+		<img id="logo" src="img/logo.svg">
+		<span id="title">武漢肺炎（全國嚴重特殊傳染性肺炎）疫情統整</span>
+		<a href="https://github.com/RiverCare/severe_pneumonia" target="_blank"><img id="github_cat" src="img/github_cat.svg"></a>
+		<span class="button" onclick="load(3)">聲明</span>
+		<span class="button" onclick="load(2)">新聞</span>
+		<span class="button" onclick="load(1)">統計</span>
+		<span class="button" onclick="load(0)">首頁</span>
+	</div>
+	<div id="page">
+		<div id="top">
+			<div id="top-state">⌘本網頁顯示之疫情資料皆以衛生福利部疾病管制署為準</div>
+			<div id="top-chart-wrapper1">
+				<div id="top-chart-container1"></div>
+			</div>
+			<div id="top-chart-wrapper2">
+				<div id="top-chart-container2"></div>
+			</div>
+		</div>
+		<div id="stat">
+		</div>
+		<div id="news">
+		</div>
+		<div id="words">
+		</div>
+	</div>
+</body>
+<script>
+$("#top").fadeOut(0);
+$("#stat").fadeOut(0);
+$("#news").fadeOut(0);
+$("#words").fadeOut(0);
+
+load(0);
+function load(page){
+	switch(page){
+	case 0: //top
+		getTop();
+		$("#top").fadeIn(0);
+		$("#stat").fadeOut(0);
+		$("#news").fadeOut(0);
+		$("#words").fadeOut(0);
+		break;
+	case 1: //stat
+		$("#top").fadeOut(0);
+		$("#stat").fadeIn(0);
+		$("#news").fadeOut(0);
+		$("#words").fadeOut(0);
+		break;
+	case 2: //news
+		$("#top").fadeOut(0);
+		$("#stat").fadeOut(0);
+		$("#news").fadeIn(0);
+		$("#words").fadeOut(0);
+		break;
+	case 3: //words
+		$("#top").fadeOut(0);
+		$("#stat").fadeOut(0);
+		$("#news").fadeOut(0);
+		$("#words").fadeIn(0);
+		
+	}
+}
+
+function getTop(){
+	$.ajax({
+		type : "POST",
+		url : "/getTop",
+		success : function(res){
+			makeTopChart(res);
+			console.log(res[0]);
+			console.log(res[1]);
+		},
+		error : function(){
+			console.log("fail");
+		}
+	});
+}
+</script>
