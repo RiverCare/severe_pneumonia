@@ -12,8 +12,7 @@
 		<img id="logo" src="img/logo.svg">
 		<span id="title">武漢肺炎（全國嚴重特殊傳染性肺炎）疫情統整</span>
 		<a href="https://github.com/RiverCare/severe_pneumonia" target="_blank"><img id="github_cat" src="img/github_cat.svg"></a>
-		<span class="button" onclick="load(3)">聲明</span>
-		<span class="button" onclick="load(2)">新聞</span>
+		<span class="button" onclick="load(2)">聲明</span>
 		<span class="button" onclick="load(1)">統計</span>
 		<span class="button" onclick="load(0)">首頁</span>
 	</div>
@@ -30,8 +29,6 @@
 		<div id="stat">
 			<div class="state">請稍待作者群之開發，將有更詳細之統計分析於此發佈</div>
 		</div>
-		<div id="news">
-		</div>
 		<div id="words">
 			<div class="state next">此網頁由愛護台灣之程式開發者所架設。</div>
 			<div class="state next">所有疫情數據皆以衛生福利部疾病管制署為準，</div>
@@ -45,7 +42,6 @@
 <script>
 $("#top").fadeOut(0);
 $("#stat").fadeOut(0);
-$("#news").fadeOut(0);
 $("#words").fadeOut(0);
 
 load(0);
@@ -64,13 +60,7 @@ function load(page){
 		$("#news").fadeOut(0);
 		$("#words").fadeOut(0);
 		break;
-	case 2: //news
-		$("#top").fadeOut(0);
-		$("#stat").fadeOut(0);
-		$("#news").fadeIn(0);
-		$("#words").fadeOut(0);
-		break;
-	case 3: //words
+	case 2: //words
 		$("#top").fadeOut(0);
 		$("#stat").fadeOut(0);
 		$("#news").fadeOut(0);
