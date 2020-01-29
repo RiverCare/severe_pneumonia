@@ -28,6 +28,7 @@
 	font-family: 'Noto Sans TC', sans-serif;
 	float:right;
 	cursor:pointer;
+	text-decoration: none;
 }
 .button:hover{
 	color:#848e9c;
@@ -54,4 +55,10 @@
 #top-chart-wrapper2{
 	margin-left:750px;
 	height:50%;
+}
+.src{
+	text-decoration: none;
+}
+.head{
+	font-size:25px;
 }

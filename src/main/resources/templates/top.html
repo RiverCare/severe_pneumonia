@@ -13,6 +13,8 @@
 		<img id="logo" src="img/logo.svg">
 		<span id="title">台灣武漢肺炎疫情統整</span>
 		<a href="https://github.com/RiverCare/severe_pneumonia" target="_blank"><img id="github_cat" src="img/github_cat.svg"></a>
+		<a class="button" target="_blank" href="https://nidss.cdc.gov.tw/ch/SingleDisease.aspx?dc=1&dt=5&disease=19CoV">疾管署</a>
+		<span class="button" onclick="load(3)">政府</span>
 		<span class="button" onclick="load(2)">聲明</span>
 		<span class="button" onclick="load(1)">統計</span>
 		<span class="button" onclick="load(0)">首頁</span>
@@ -39,12 +41,45 @@
 			<div class="state next">另外尚無支援手機介面，以手機瀏覽器瀏覽時請自行放大。</div>
 			<div class="state next">感謝各位，作者敬上。</div>
 		</div>
+		<div id="gov">
+			<h3 class="state next">2020年1月27日</h3>
+			<span class="state next head">疾病管制署</span>
+			<a class="state next src" target="_blank" href="https://www.facebook.com/TWCDC/photos/a.187029023406/10157792593768407/?type=3&theater">[出處]</a>
+			<div class="state next">防範武漢肺炎之口罩配戴時點：</div>
+			<div class="state next">1. 有發燒、咳嗽、流鼻涕等呼吸道症狀。</div>
+			<div class="state next">2. 進出醫療院所（應全程配戴）。</div>
+			<div class="state next">3. 出入通風不良、擁擠密閉之空間。</div>
+			<div class="state next">4. 有慢性疾病者。</div>
+			<hr>
+		
+			<h3 class="state next">2020年1月27日</h3>
+			<span class="state next head">經濟部</span>
+			<a class="state next src" target="_blank" href="https://www.facebook.com/moea.gov.tw/photos/a.335602533146596/3612639758776174/?type=3&theater">[出處]</a>
+			<div class="state next">1. 口罩廠商提前開工並增加人力。</div>
+			<div class="state next">2. 初三至初五原每日產能79萬副增至93萬副。</div>
+			<div class="state next">3. 開工後原每日產能244萬副增至390萬副。</div>
+			<div class="state next">4. 行政院已指示防疫期間廠商配合政府生產，若有餘貨全數收購。</div>
+			<div class="state next">5. 衛福部今日釋出庫存100萬副口罩至電商、醫材通路。</div>
+			<div class="state next">6. 1月28至30日每日各釋出200萬副給藥妝、四大超商等各大通路。</div>
+			<div class="state next">7. 各超商總部皆有庫存，因應年假優先增加交通轉運站、醫院周邊門市之供貨。</div>
+			<hr>
+			
+			<h3 class="state next">2020年1月26日</h3>
+			<span class="state next head">經濟部</span>
+			<a class="state next src" target="_blank" href="https://www.facebook.com/moea.gov.tw/photos/a.335602533146596/3609739909066159/?type=3&theater">[出處]</a>
+			<div class="state next">1. 口罩廠商於初二起陸續開工，初三每日產能為79萬副，初六達正常每日產能188萬副。</div>
+			<div class="state next">2. 2020年1月24日起停止口罩外銷。</div>
+			<div class="state next">3. 衛福部疾管署口罩存量超過4000萬副，已提供四大超商200萬片，每日提供100萬副予各大通路。</div>
+			<div class="state next">4. 經濟部已聯繫物流業者，年假時繼續協助出貨。</div>
+			<div class="state next">5. 人潮多之超商，有時補貨不及，皆已向總部叫貨。</div>
+		</div>
 	</div>
 </body>
 <script>
 $("#top").fadeOut(0);
 $("#stat").fadeOut(0);
 $("#words").fadeOut(0);
+$("#gov").fadeOut(0);
 
 load(0);
 function load(page){
@@ -55,6 +90,7 @@ function load(page){
 		$("#stat").fadeOut(0);
 		$("#news").fadeOut(0);
 		$("#words").fadeOut(0);
+		$("#gov").fadeOut(0);
 		break;
 	case 1: //stat
 		getStatView();
@@ -63,12 +99,21 @@ function load(page){
 		$("#stat").fadeIn(0);
 		$("#news").fadeOut(0);
 		$("#words").fadeOut(0);
+		$("#gov").fadeOut(0);
 		break;
 	case 2: //words
 		$("#top").fadeOut(0);
 		$("#stat").fadeOut(0);
 		$("#news").fadeOut(0);
 		$("#words").fadeIn(0);
+		$("#gov").fadeOut(0);
+		break;
+	case 3: //gov
+		$("#top").fadeOut(0);
+		$("#stat").fadeOut(0);
+		$("#news").fadeOut(0);
+		$("#words").fadeOut(0);
+		$("#gov").fadeIn(0);
 	}
 }
 
