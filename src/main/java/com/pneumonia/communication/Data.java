@@ -34,7 +34,7 @@ public class Data {
 	}
 	
 	public static String fetchStatView() throws IOException{
-		File dir = new File("src/main/resources/static/csv/stat_view.csv");
+		File dir = new File("src/main/resources/static/csv/stat_views.csv");
 		FileReader fileReader = new FileReader(dir.getPath());
 		BufferedReader csv = new BufferedReader(fileReader);
 		return csv.readLine();
