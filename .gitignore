@@ -31,4 +31,4 @@ build/
 .vscode/
 
 #ignored files
-/src/main/resources/static/csv/stat_view.csv
+/**/stat_view.csv
