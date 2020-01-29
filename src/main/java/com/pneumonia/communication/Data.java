@@ -41,13 +41,13 @@ public class Data {
 	}
 	
 	public static void writeStatView() throws IOException{
-		File dir = new File("src/main/resources/static/csv/stat_view.csv");
+		File dir = new File("src/main/resources/static/csv/stat_views.csv");
 		FileReader fileReader = new FileReader(dir.getPath());
 		BufferedReader csv = new BufferedReader(fileReader);
 		int view = Integer.parseInt(csv.readLine());
 		view += 1;
 		
-		FileWriter fileWriter =new FileWriter("src/main/resources/static/csv/stat_view.csv", false);
+		FileWriter fileWriter =new FileWriter("src/main/resources/static/csv/stat_views.csv", false);
 		fileWriter.append(String.valueOf(view));
 		fileWriter.flush();
 		fileWriter.close();
