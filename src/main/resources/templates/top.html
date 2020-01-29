@@ -3,6 +3,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	<script src="js/topChart.js"></script>
+	<script src="js/statChart.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:100&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:200&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/top.css">
@@ -10,7 +11,7 @@
 <body id="body">
 	<div id="banner">
 		<img id="logo" src="img/logo.svg">
-		<span id="title">武漢肺炎（全國嚴重特殊傳染性肺炎）疫情統整</span>
+		<span id="title">台灣武漢肺炎疫情統整</span>
 		<a href="https://github.com/RiverCare/severe_pneumonia" target="_blank"><img id="github_cat" src="img/github_cat.svg"></a>
 		<span class="button" onclick="load(2)">聲明</span>
 		<span class="button" onclick="load(1)">統計</span>
@@ -18,7 +19,7 @@
 	</div>
 	<div id="page">
 		<div id="top">
-			<div class="state">⌘本網頁顯示之疫情資料皆以衛生福利部疾病管制署為準（2020年1月29日06時11分更新）</div>
+			<div class="state">⌘本網頁顯示之疫情資料皆以衛生福利部疾病管制署為準（2020年1月29日12時02分更新）</div>
 			<div id="top-chart-wrapper1">
 				<div id="top-chart-container1"></div>
 			</div>
@@ -27,16 +28,16 @@
 			</div>
 		</div>
 		<div id="stat">
-			<div class="state">請稍待作者群之開發，將有更詳細之統計分析於此發佈</div>
 			<div id="stat-view"class="state next"></div>
+			<div id="stat-chart-container"></div>
 		</div>
 		<div id="words">
-			<div class="state next">此網頁由愛護台灣之程式開發者所架設。</div>
-			<div class="state next">所有疫情數據皆以衛生福利部疾病管制署為準，</div>
-			<div class="state next">希望能讓民眾獲得最新且正確之消息。</div>
-			<div class="state next">此網站資訊若附上出處，皆可轉載，無需詢問作者。</div>
-			<div class="state next">由於此網頁為臨時架設，若有顯示上的問題，請見諒。</div>
-			<div class="state next">感謝各位，作者群敬上。</div>
+			<div class="state next">此網站由愛護台灣之程式開發者所架設。</div>
+			<div class="state next">所有疫情數據皆以衛生福利部疾病管制署為準，希望能讓民眾獲得最新且正確之消息。</div>
+			<div class="state next">若附上出處此網站內容皆可轉載，無需詢問作者。</div>
+			<div class="state next">由於此網站為臨時架設，若有顯示上的問題，請見諒。</div>
+			<div class="state next">另外尚無支援手機介面，以手機瀏覽器瀏覽時請自行放大。</div>
+			<div class="state next">感謝各位，作者敬上。</div>
 		</div>
 	</div>
 </body>
@@ -56,7 +57,8 @@ function load(page){
 		$("#words").fadeOut(0);
 		break;
 	case 1: //stat
-		getStat();
+		getStatView();
+		getStat(0);
 		$("#top").fadeOut(0);
 		$("#stat").fadeIn(0);
 		$("#news").fadeOut(0);
@@ -67,7 +69,6 @@ function load(page){
 		$("#stat").fadeOut(0);
 		$("#news").fadeOut(0);
 		$("#words").fadeIn(0);
-		
 	}
 }
 
@@ -86,12 +87,26 @@ function getTop(){
 	});
 }
 
-function getStat(){
+function getStatView(){
+	$.ajax({
+		type : "POST",
+		url : "/getStatView",
+		success : function(res){
+			document.getElementById("stat-view").innerText = "網頁瀏覽人數："+res+"人";
+		},
+		error : function(){
+			console.log("fail");
+		}
+	});
+}
+
+function getStat(loc){
 	$.ajax({
 		type : "POST",
 		url : "/getStat",
+		data : {loc:loc},
 		success : function(res){
-			document.getElementById("stat-view").innerText = "網頁瀏覽人數："+res+"人";
+			makeStatChart(res);
 		},
 		error : function(){
 			console.log("fail");

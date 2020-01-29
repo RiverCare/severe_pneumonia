@@ -25,9 +25,15 @@ public class HomeController {
 		return Data.fetchTop();
 	}
 	
+	@RequestMapping(value= "/getStatView", method = RequestMethod.POST)
+	@ResponseBody
+	public String getStatView() throws IOException {
+		return Data.fetchStatView();
+	}
+	
 	@RequestMapping(value= "/getStat", method = RequestMethod.POST)
 	@ResponseBody
-	public String getStat() throws IOException {
-		return Data.fetchStatView();
+	public String[] getStat(int loc) throws IOException {
+		return Data.fetchStat(loc);
 	}
 }

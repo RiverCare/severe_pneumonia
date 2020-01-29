@@ -52,4 +52,16 @@ public class Data {
 		fileWriter.flush();
 		fileWriter.close();
 	}
+	
+	public static String[] fetchStat(int loc) throws IOException{
+		File dir = new File("src/main/resources/static/csv/stat_"+loc+".csv");
+		FileReader fileReader = new FileReader(dir.getPath());
+		BufferedReader csv = new BufferedReader(fileReader);
+		String line;
+		String lines = "";
+		while((line = csv.readLine()) != null) {
+			lines += line;
+		}
+		return lines.split(";");
+	}
 }
