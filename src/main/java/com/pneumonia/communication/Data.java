@@ -54,14 +54,25 @@ public class Data {
 	}
 	
 	public static String[] fetchStat(int loc) throws IOException{
-		File dir = new File("src/main/resources/static/csv/stat_"+loc+".csv");
-		FileReader fileReader = new FileReader(dir.getPath());
-		BufferedReader csv = new BufferedReader(fileReader);
-		String line;
-		String lines = "";
-		while((line = csv.readLine()) != null) {
-			lines += line;
+		switch(loc) {
+		
+		case 0:
+			File dir = new File("src/main/resources/static/csv/stat_"+loc+".csv");
+			FileReader fileReader = new FileReader(dir.getPath());
+			BufferedReader csv = new BufferedReader(fileReader);
+			String line;
+			String lines = "";
+			while((line = csv.readLine()) != null) {
+				lines += line;
+			}
+			return lines.split(";");
+		case 1:
+			File dir_1 = new File("src/main/resources/static/csv/stat_ratio.csv");
+			FileReader fileReader_1 = new FileReader(dir_1.getPath());
+			BufferedReader csv_1 = new BufferedReader(fileReader_1);
+
+			return csv_1.readLine().split(",");
 		}
-		return lines.split(";");
+		return null;
 	}
 }

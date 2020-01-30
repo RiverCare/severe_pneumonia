@@ -21,7 +21,7 @@
 	</div>
 	<div id="page">
 		<div id="top">
-			<div class="state">⌘本網頁顯示之疫情資料皆以衛生福利部疾病管制署為準（2020年1月29日12時02分更新）</div>
+			<div class="state">⌘本網頁顯示之疫情資料皆以衛生福利部疾病管制署等政府單位為準（2020年1月30日12時35分更新）</div>
 			<div id="top-chart-wrapper1">
 				<div id="top-chart-container1"></div>
 			</div>
@@ -31,11 +31,16 @@
 		</div>
 		<div id="stat">
 			<div id="stat-view"class="state next"></div>
-			<div id="stat-chart-container"></div>
+			<div id="stat-chart-wrapper1">
+				<div id="stat-chart-container1"></div>
+			</div>
+			<div id="stat-chart-wrapper2">
+				<div id="stat-chart-container2"></div>
+			</div>
 		</div>
 		<div id="words">
 			<div class="state next">此網站由愛護台灣之程式開發者所架設。</div>
-			<div class="state next">所有疫情數據皆以衛生福利部疾病管制署為準，希望能讓民眾獲得最新且正確之消息。</div>
+			<div class="state next">所有疫情數據皆以衛生福利部疾病管制署等政府單位為準，希望能讓民眾獲得最新且正確之消息。</div>
 			<div class="state next">若附上出處此網站內容皆可轉載，無需詢問作者。</div>
 			<div class="state next">由於此網站為臨時架設，若有顯示上的問題，請見諒。</div>
 			<div class="state next">另外尚無支援手機介面，以手機瀏覽器瀏覽時請自行放大。</div>
@@ -105,6 +110,7 @@ function load(page){
 	case 1: //stat
 		getStatView();
 		getStat(0);
+		getStat(1);
 		$("#top").fadeOut(0);
 		$("#stat").fadeIn(0);
 		$("#news").fadeOut(0);
@@ -133,8 +139,6 @@ function getTop(){
 		url : "/getTop",
 		success : function(res){
 			makeTopChart(res);
-			console.log(res[0]);
-			console.log(res[1]);
 		},
 		error : function(){
 			console.log("fail");
@@ -161,7 +165,7 @@ function getStat(loc){
 		url : "/getStat",
 		data : {loc:loc},
 		success : function(res){
-			makeStatChart(res);
+			makeStatChart(loc,res);
 		},
 		error : function(){
 			console.log("fail");

@@ -12,7 +12,7 @@ function makeTopChart(data){
 		animationEnabled: true,
 		backgroundColor:"#f4f5f6",
 		title:{
-			text: "最新疫情（總共"+sum+"人）",
+			text: "台灣最新疫情（總共"+sum+"人）",
 			fontFamily: "'Noto Sans TC', sans-serif",
 			fontColor:"#606c76",
 			fontSize:20
@@ -50,13 +50,12 @@ function makeTopChart(data){
 		data[1][i] = data[1][i].split(",");
 		data[1][i][1] = parseInt(data[1][i][1]);
 	}
-	console.log(data[1]);
 	
 	var chart2 = new CanvasJS.Chart("top-chart-container2", {
 		theme: "light2",
 		animationEnabled: true,
 		title:{
-			text: "最新各縣市病例統計",
+			text: "台灣最新各縣市病例統計",
 			backgroundColor:"#f4f5f6",
 			fontFamily: "'Noto Sans TC', sans-serif",
 			fontColor:"#606c76",
