@@ -32,47 +32,4 @@ public class Data {
 		csv.close();
 		return values;
 	}
-	
-	public static String fetchStatView() throws IOException{
-		File dir = new File("src/main/resources/static/csv/stat_views.csv");
-		FileReader fileReader = new FileReader(dir.getPath());
-		BufferedReader csv = new BufferedReader(fileReader);
-		return csv.readLine();
-	}
-	
-	public static void writeStatView() throws IOException{
-		File dir = new File("src/main/resources/static/csv/stat_views.csv");
-		FileReader fileReader = new FileReader(dir.getPath());
-		BufferedReader csv = new BufferedReader(fileReader);
-		int view = Integer.parseInt(csv.readLine());
-		view += 1;
-		
-		FileWriter fileWriter =new FileWriter("src/main/resources/static/csv/stat_views.csv", false);
-		fileWriter.append(String.valueOf(view));
-		fileWriter.flush();
-		fileWriter.close();
-	}
-	
-	public static String[] fetchStat(int loc) throws IOException{
-		switch(loc) {
-		
-		case 0:
-			File dir = new File("src/main/resources/static/csv/stat_"+loc+".csv");
-			FileReader fileReader = new FileReader(dir.getPath());
-			BufferedReader csv = new BufferedReader(fileReader);
-			String line;
-			String lines = "";
-			while((line = csv.readLine()) != null) {
-				lines += line;
-			}
-			return lines.split(";");
-		case 1:
-			File dir_1 = new File("src/main/resources/static/csv/stat_ratio.csv");
-			FileReader fileReader_1 = new FileReader(dir_1.getPath());
-			BufferedReader csv_1 = new BufferedReader(fileReader_1);
-
-			return csv_1.readLine().split(",");
-		}
-		return null;
-	}
 }

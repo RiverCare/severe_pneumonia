@@ -14,8 +14,7 @@ import com.pneumonia.communication.Data;
 @Controller
 public class HomeController {
 	@RequestMapping(value= "/", method = RequestMethod.GET)
-	public ModelAndView home(ModelAndView mav) throws IOException {
-		Data.writeStatView();
+	public ModelAndView home() throws IOException {
 		return new ModelAndView("top");
 	}
 	
@@ -23,17 +22,5 @@ public class HomeController {
 	@ResponseBody
 	public ArrayList<String[]> getTop() throws IOException {
 		return Data.fetchTop();
-	}
-	
-	@RequestMapping(value= "/getStatView", method = RequestMethod.POST)
-	@ResponseBody
-	public String getStatView() throws IOException {
-		return Data.fetchStatView();
-	}
-	
-	@RequestMapping(value= "/getStat", method = RequestMethod.POST)
-	@ResponseBody
-	public String[] getStat(int loc) throws IOException {
-		return Data.fetchStat(loc);
 	}
 }

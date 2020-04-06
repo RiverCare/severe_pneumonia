@@ -68,7 +68,7 @@ function makeTopChart(data){
 			labelFontSize:15
 		},
 		axisY:{
-			interval:1,
+			interval:10,
 			labelFontSize:15,
 		},
 		dataPointWidth: 20,
